@@ -1,0 +1,253 @@
+syntax = "proto3";
+
+package api;
+
+message PartnerContext {
+    string partnerID = 1;
+    bytes context = 2;
+}
+
+message Header {
+    uint32 code = 1;
+    string msg = 2;
+}
+
+message SetBankDetailRequest {
+    PartnerContext partnerContext = 1;
+     string userID = 2;
+     string detailName = 3;
+     string bankIdentificationCode = 4;
+     string bankName = 5;
+     string city = 6;
+     string address = 7;
+     string corrAccount = 8;
+     string checkingAccount = 9;
+}
+
+message SetBankDetailResponse {
+    Header header = 1;
+    string requisiteID = 2;
+    bool defaultDetail = 3;
+}
+
+message GetBankDetailsRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+}
+
+message GetBankDetailRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string requisiteID = 3;
+}
+
+message GetBankDetailResponse {
+    Header header = 1;
+    string requisiteID = 2;
+    string detailName = 3;
+    string bankIdentificationCode = 4;
+    string bankName = 5;
+    string city = 6;
+    string address = 7;
+    string corrAccount = 8;
+    string checkingAccount = 9;
+    bool defaultDetail = 10;
+}
+
+message BankDetailInfo{
+    string requisiteID = 1;
+    string detailName = 2;
+    string bankIdentificationCode = 3;
+    string bankName = 4;
+    string city = 5;
+    string address = 6;
+    string corrAccount = 7;
+    string checkingAccount = 8;
+    bool defaultDetail = 9;
+}
+
+message GetBankDetailsResponse {
+    Header header = 1;
+    repeated BankDetailInfo bankDetailInfo = 2;
+}
+
+message SetBusinessInfoRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string companyName = 3;
+    string inn = 4;
+    string kpp = 5;
+    string ogrn = 6;
+    string legalAddress = 7;
+    string physicalAddress = 8;
+    string chiefUserFIO = 9;
+    string chiefUserPosition = 10;
+    string groundsForActions = 11;
+}
+
+message InfoIdResponse {
+    Header header = 1;
+    string infoID = 2;
+}
+
+message GetInfoRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    uint32 userType = 3;
+}
+
+message BusinessInfoResponse {
+    Header header = 1;
+    string infoID = 2;
+    string companyName = 3;
+    string inn = 4;
+    string kpp = 5;
+    string ogrn = 6;
+    string legalAddress = 7;
+    string physicalAddress = 8;
+    string chiefUserFIO = 9;
+    string chiefUserPosition = 10;
+    string groundsForActions = 11;
+}
+
+message SetBusinessContactInfoRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string contactUserFIO = 3;
+    string contactUserPosition = 4;
+    string contactUserPhone = 5;
+    string contactUserEmail = 6;
+}
+
+message BusinessContactInfoResponse {
+    Header header = 1;
+    string infoID = 2;
+    string contactUserFIO = 3;
+    string contactUserPosition = 4;
+    string contactUserPhone = 5;
+    string contactUserEmail = 6;
+}
+
+message UpdateBusinessInfoRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string infoID = 3;
+    string companyName = 4;
+    string inn = 5;
+    string kpp = 6;
+    string ogrn = 7;
+    string legalAddress = 8;
+    string physicalAddress = 9;
+    string chiefUserFIO = 10;
+    string chiefUserPosition = 11;
+    string groundsForActions = 12;
+}
+
+message UpdateBusinessContactInfoRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string infoID = 3;
+    string contactUserFIO = 4;
+    string contactUserPosition = 5;
+    string contactUserPhone = 6;
+    string contactUserEmail = 7;
+}
+
+message UpdateDefaultPaymentsRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string requisiteID = 3;
+}
+
+message UpdateDefaultPaymentsResponse {
+    Header header = 1;
+    bool defaultPayment = 2;
+}
+
+message SetBankCardRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string pan = 3;
+    string cardHolder = 4;
+    string expiry = 5;
+}
+
+message SetBankCardResponse {
+    Header header = 1;
+    string cardID = 2;
+    bool defaultCard = 3;
+}
+
+message GetBankCardsRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+}
+
+message GetBankCardRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string cardID = 3;
+}
+
+message GetBankCardResponse {
+    Header header = 1;
+    string cardID = 2;
+    string pan = 3;
+    string cardHolder = 4;
+    string expiry = 5;
+    bool defaultCard = 6;
+}
+
+message BankCardInfo{
+    string cardID = 1;
+    string pan = 2;
+    string cardHolder = 3;
+    string expiry = 4;
+    bool defaultCard = 5;
+}
+
+message GetBankCardsResponse {
+    Header header = 1;
+    repeated BankCardInfo bankCardInfo = 2;
+}
+
+message SetCustomerInfoRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string FIO = 3;
+}
+
+message CustomerInfoResponse {
+    Header header = 1;
+    string infoID = 2;
+    string fio = 3;
+}
+
+message SetCustomerContactInfoRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string contactUserPhone = 3;
+    string contactUserEmail = 4;
+}
+
+message CustomerContactInfoResponse {
+    Header header = 1;
+    string infoID = 2;
+    string contactUserPhone = 3;
+    string contactUserEmail = 4;
+}
+
+message UpdateCustomerInfoRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string infoID = 3;
+    string fio = 4;
+}
+
+message UpdateCustomerContactInfoRequest {
+    PartnerContext partnerContext = 1;
+    string userID = 2;
+    string infoID = 3;
+    string contactUserPhone = 4;
+    string contactUserEmail = 5;
+}
